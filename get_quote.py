@@ -43,15 +43,15 @@ if random_int == 0:
 		args_list = tuple(map(get_random_item, (moods, moods, countries, professions, first_names, last_names)))
 
 	# 生成「名言」
-	quote = '%s的本质是一种隐藏的%s。  --- %s著名%s: %s %s'  % args_list		
+	quote = '%s的本质是一种隐藏的%s。  --- %s著名%s %s %s'  % args_list		
 
 elif random_int == 1:
 	args_list = tuple(map(get_random_item, (languages, advantages, descriptions, companies, companies_type, job_titles, first_names, last_names)))
-	quote = '我认为 %s 是世界上最好的语言，它的%s让我们的团队%s。 --- %s %s %s: %s %s' % args_list
+	quote = '我认为 %s 是世界上最好的语言，它的%s让我们的团队%s。 --- %s %s %s %s %s' % args_list
 
 elif random_int == 2:
 	args_list = tuple(map(get_random_item, (fruits, moods, countries, professions, first_names, last_names)))
-	quote = '%s是甜的。这是一种让人感到%s的甜。 --- %s著名%s: %s %s' % args_list
+	quote = '%s是甜的。这是一种让人感到%s的甜。 --- %s著名%s %s %s' % args_list
 
 print('Content-Type: text/plain')
 print('')
