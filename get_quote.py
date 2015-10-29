@@ -8,7 +8,7 @@ from random import randint
 arguments = cgi.FieldStorage()
 
 # 默认输出 TXT 格式的『名言』
-version = arguments.getvalue('v', 'txt')
+version = arguments.getvalue('v', 'json')
 
 # 从一个  tuple 或者 list 中随机获取一项
 def get_random_item(some_list):
@@ -70,5 +70,5 @@ elif version == 'json':
     quote, author = map(str.strip, (quote.split('---')))  # 分开名言和作者
     print('{"quote": "' + quote + '", "author": "' + author + '" }')
 else:
-        print('Status: 403')    # 参数不对禁止访问哦
-            print('')
+    print('Status: 403')    # 参数不对禁止访问哦
+    print('')
