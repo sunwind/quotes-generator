@@ -1,7 +1,14 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
+import cgi
 from random import randint
+
+# 获取 CGI URL 参数，以判断输出 TXT 或者 JSON 版本
+arguments = cgi.FieldStorage()
+
+# 默认输出 TXT 格式的『名言』
+version = arguments.getvalue('v', 'txt')
 
 # 从一个  tuple 或者 list 中随机获取一项
 def get_random_item(some_list):
@@ -53,6 +60,12 @@ elif random_int == 2:
 	args_list = tuple(map(get_random_item, (fruits, moods, countries, professions, first_names, last_names)))
 	quote = '%s是甜的。这是一种让人感到%s的甜。 --- %s著名%s %s %s' % args_list
 
-print('Content-Type: text/plain')
-print('')
-print(quote)
+if version == 'txt':
+    print('Content-Type: text/plain')
+    print('')
+    print(quote)
+elif version == 'json':
+    print('Content-Type: application/json')
+    print('')
+    quote, author = map(str.strip, (quote.split('---')))  # 分开名言和作者
+    print("{'quote': '" + quote + "', 'author': '" + author + "'")
