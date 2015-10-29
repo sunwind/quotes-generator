@@ -53,4 +53,6 @@ elif random_int == 2:
 	args_list = tuple(map(get_random_item, (fruits, moods, countries, professions, first_names, last_names)))
 	quote = '%s是甜的。这是一种让人感到%s的甜。 --- %s著名%s: %s %s' % args_list
 
+print('Content-Type: text/plain')
+print('')
 print(quote)
