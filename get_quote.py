@@ -39,7 +39,7 @@ if random_int == 0:
 	args_list = (None, None)
 
 	while args_list[0] == args_list[1] :	# 避免重复生成两个相同的 mood
-		# map 的结果是 list，必须转为 tuple 才可以用于格式化字符串
+		# map 的结果是 list (Python 3 下是 map object)，必须转为 tuple 才可以用于格式化字符串
 		args_list = tuple(map(get_random_item, (moods, moods, countries, professions, first_names, last_names)))
 
 	# 生成「名言」
