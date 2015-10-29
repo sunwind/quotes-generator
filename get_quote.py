@@ -8,7 +8,7 @@ from random import randint
 arguments = cgi.FieldStorage()
 
 # 默认输出 TXT 格式的『名言』
-version = arguments.getvalue('v', 'json')
+version = arguments.getvalue('v', 'txt')
 
 # 从一个  tuple 或者 list 中随机获取一项
 def get_random_item(some_list):
