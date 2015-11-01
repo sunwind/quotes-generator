@@ -15,22 +15,23 @@ def get_random_item(some_list):
     return some_list[randint(0, len(some_list)-1)]
 
 # 从外部文件读取姓名列表。姓名列表来自 https://github.com/dominictarr/random-name
-def get_name_list(filename):
-    name_list = []
+def get_list_from_file(filename):
+    the_list = []
     with open(filename, 'r') as name_file:
         for line in name_file.readlines():
-            name_list.append(line.strip())
+            the_list.append(line.strip())
 
-    return name_list
+    return the_list
 
 # 姓名列表
-first_names = get_name_list('first_name.txt')
-last_names = get_name_list('last_name.txt')
+first_names = get_list_from_file('first_name.txt')
+last_names = get_list_from_file('last_name.txt')
 
 # 各个可选的列表
 # FIXME： 这些应该在配置文件里
+
 moods = ('快乐', '悲伤', '兴奋', '愉悦', '失落', '寂寥', '焦躁', '孤独', '孤单', '无力', '空虚', '相见恨晚')
-countries = ('英国', '法国', '美国', '爱尔兰', '澳大利亚', '加拿大', '德国', '芬兰', '挪威', '新西兰', '瑞士', '意大利', '瑞典')
+countries = ('英国', '法国', '美国', '爱尔兰', '澳大利亚', '加拿大', '德国', '芬兰', '挪威', '新西兰', '瑞士', '意大利', '瑞典', '荷兰', '克罗地亚')
 professions = ('小说家', '作家', '设计师', '画家', '社会学家', '学者', '艺术家')
 fruits = ('苹果', '西瓜', '橘子', '水蜜桃', '香蕉', '橙子', '火龙果', '草莓', '柚子', '荔枝', '甘蔗', '柿子', '甜瓜')
 languages = ('Java', 'C', 'PHP', 'Go', 'Erlang', 'JavaScript', 'C++', 'Python', 'Ruby', 'C#', 'Objective C', 'Swift', 'Scala')
@@ -39,6 +40,9 @@ companies = ('Ambrella', 'AETex', 'Greenlake', 'FrontAge', 'Clevbit', 'Fantasy',
 company_types = ('LLC', 'GmbH', 'Ltd.', 'AG', 'Corp.', 'Inc.')
 job_titles = ('CEO', '系统架构师', '资深开发工程师', '项目经理', '技术总监', 'CTO', '总裁')
 descriptions = ('爱不释手', '感到随心所欲', '如虎添翼', '始终保持高效', '披荆斩棘，无所不能', '心无旁骛', '动力十足', '非常满意')
+
+# TODO: 模板要分离出去
+# FIXME: 减少逻辑和模板的耦合度
 
 # 随机决定使用哪个模板
 random_int = randint(0, 3)
