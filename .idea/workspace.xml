@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c282d61-85ce-4fe4-bc2f-114301ce19e3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/first_name.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/last_name.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lists/first_name.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lists/last_name.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/get_quote.py" afterPath="$PROJECT_DIR$/get_quote.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="quotes-generator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="get_quote.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/get_quote.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42759407">
-              <caret line="32" column="184" selection-start-line="32" selection-start-column="184" selection-end-line="32" selection-end-column="184" />
+            <state vertical-scroll-proportion="0.48688713">
+              <caret line="31" column="14" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
               <folding>
                 <element signature="e#47#57#0" expanded="true" />
               </folding>
@@ -113,6 +112,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="quotes-generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quotes-generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quotes-generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lists" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -378,8 +391,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/get_quote.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42759407">
-          <caret line="32" column="184" selection-start-line="32" selection-start-column="184" selection-end-line="32" selection-end-column="184" />
+        <state vertical-scroll-proportion="0.48688713">
+          <caret line="31" column="14" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
           <folding>
             <element signature="e#47#57#0" expanded="true" />
           </folding>

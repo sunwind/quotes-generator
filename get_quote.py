@@ -29,8 +29,14 @@ def get_path(list_name):
     return 'lists/' + list_name + '.txt'
 
 # 姓名列表
-file_path_list = list(map(get_path, ['first_name', 'last_name', 'moods', 'countries', 'professions', 'fruits', 'languages', 'advantages', 'companies', 'company_types', 'job_titles', 'descriptions']))
-first_names, last_names, moods, countries, professions, fruits, languages, advantages, companies, company_types, job_titles, descriptions = list(map(get_list_from_file, file_path_list))
+list_names = ['first_names', 'last_names', 'moods', 'countries', 'professions', 'fruits', 'languages', 'advantages', 'companies', 'company_types', 'job_titles', 'descriptions']
+file_path_list = list(map(get_path, list_names))
+args_dict = {}
+
+args_result = list(map(get_list_from_file, file_path_list))
+
+for item in enumerate(list_names):
+    args_dict[item[1]] = args_result[item[0]]
 
 # TODO: 模板要分离出去
 # FIXME: 减少逻辑和模板的耦合度
@@ -44,21 +50,25 @@ if random_int == 0:
 
     while args_list[0] == args_list[1] :    # 避免重复生成两个相同的 mood
         # map 的结果是 list (Python 3 下是 map object)，必须转为 tuple 才可以用于格式化字符串
-        args_list = tuple(map(get_random_item, (moods, moods, countries, professions, first_names, last_names)))
+        args_str_list = ['moods', 'moods', 'countries', 'professions', 'first_names', 'last_names']
+        args_list = tuple(map(get_random_item, map(args_dict.get, args_str_list)))
 
     # 生成第一种「名言」
     quote = '%s的本质是一种隐藏的%s。  --- %s著名%s %s %s'  % args_list        
 
 elif random_int == 1:
-    args_list = tuple(map(get_random_item, (languages, advantages, descriptions, companies, company_types, job_titles, first_names, last_names)))
+    args_str_list = ['languages', 'advantages', 'descriptions', 'companies', 'company_types', 'job_titles', 'first_names', 'last_names']
+    args_list = tuple(map(get_random_item, map(args_dict.get, args_str_list)))
     quote = '我认为 %s 是世界上最好的语言，它的%s让我们的团队%s。 --- %s %s %s %s %s' % args_list
 
 elif random_int == 2:
-    args_list = tuple(map(get_random_item, (fruits, moods, countries, professions, first_names, last_names)))
+    args_str_list = ['fruits', 'moods', 'countries', 'professions', 'first_names', 'last_names']
+    args_list = tuple(map(get_random_item, map(args_dict.get, args_str_list)))
     quote = '%s是甜的。这是一种让人感到%s的甜。 --- %s著名%s %s %s' % args_list
 
 elif random_int == 3:
-    args_list = tuple(map(get_random_item, (languages, fruits, advantages, companies, job_titles, first_names, last_names)))
+    args_str_list = ['languages', 'fruits', 'advantages', 'companies', 'job_titles', 'first_names', 'last_names']
+    args_list = tuple(map(get_random_item, map(args_dict.get, args_str_list)))
     quote = '%s 语言就像%s一样，需要细细品味，才能充分体会它那愈久弥深的%s。 --- %s 公司 %s : %s %s' % args_list
 
 if version == 'txt':
