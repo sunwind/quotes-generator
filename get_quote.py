@@ -14,32 +14,23 @@ version = arguments.getvalue('v', 'txt')
 def get_random_item(some_list):
     return some_list[randint(0, len(some_list)-1)]
 
-# 从外部文件读取姓名列表。姓名列表来自 https://github.com/dominictarr/random-name
-def get_list_from_file(filename):
+# 从外部文件读取到列表。姓名列表来自 https://github.com/dominictarr/random-name
+def get_list_from_file(filepath):
     the_list = []
-    with open(filename, 'r') as name_file:
+    with open(filepath, 'r') as name_file:
         for line in name_file.readlines():
-            the_list.append(line.strip())
+            if line.strip() != '':
+                the_list.append(line.strip())
 
     return the_list
 
+# 从列表名得到文件地址
+def get_path(list_name):
+    return 'lists/' + list_name + '.txt'
+
 # 姓名列表
-first_names = get_list_from_file('first_name.txt')
-last_names = get_list_from_file('last_name.txt')
-
-# 各个可选的列表
-# FIXME： 这些应该在配置文件里
-
-moods = ('快乐', '悲伤', '兴奋', '愉悦', '失落', '寂寥', '焦躁', '孤独', '孤单', '无力', '空虚', '相见恨晚')
-countries = ('英国', '法国', '美国', '爱尔兰', '澳大利亚', '加拿大', '德国', '芬兰', '挪威', '新西兰', '瑞士', '意大利', '瑞典', '荷兰', '克罗地亚')
-professions = ('小说家', '作家', '设计师', '画家', '社会学家', '学者', '艺术家')
-fruits = ('苹果', '西瓜', '橘子', '水蜜桃', '香蕉', '橙子', '火龙果', '草莓', '柚子', '荔枝', '甘蔗', '柿子', '甜瓜')
-languages = ('Java', 'C', 'PHP', 'Go', 'Erlang', 'JavaScript', 'C++', 'Python', 'Ruby', 'C#', 'Objective C', 'Swift', 'Scala')
-advantages = ('优雅', '效率', '灵活', '博大精深', '规整度', '成熟度', '可靠', '适应性')
-companies = ('Ambrella', 'AETex', 'Greenlake', 'FrontAge', 'Clevbit', 'Fantasy', 'Allem', 'Georming')
-company_types = ('LLC', 'GmbH', 'Ltd.', 'AG', 'Corp.', 'Inc.')
-job_titles = ('CEO', '系统架构师', '资深开发工程师', '项目经理', '技术总监', 'CTO', '总裁')
-descriptions = ('爱不释手', '感到随心所欲', '如虎添翼', '始终保持高效', '披荆斩棘，无所不能', '心无旁骛', '动力十足', '非常满意')
+file_path_list = list(map(get_path, ['first_name', 'last_name', 'moods', 'countries', 'professions', 'fruits', 'languages', 'advantages', 'companies', 'company_types', 'job_titles', 'descriptions']))
+first_names, last_names, moods, countries, professions, fruits, languages, advantages, companies, company_types, job_titles, descriptions = list(map(get_list_from_file, file_path_list))
 
 # TODO: 模板要分离出去
 # FIXME: 减少逻辑和模板的耦合度
