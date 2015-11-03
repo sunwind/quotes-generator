@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import cgi
+import sys
 from random import randint
 
 # 获取 CGI URL 参数，以判断输出 TXT 或者 JSON 版本
@@ -29,7 +30,8 @@ def get_path(list_name):
     return 'lists/' + list_name + '.txt'
 
 # 各种列表的名字
-list_names = ['first_names', 'last_names', 'moods', 'countries', 'professions', 'fruits', 'languages', 'advantages', 'companies', 'company_types', 'job_titles', 'descriptions']
+list_names = ['first_names', 'last_names', 'moods', 'countries', 'professions', 'fruits', 'languages', 'advantages',
+              'companies', 'company_types', 'job_titles', 'descriptions']
 
 # 得到以上各个列表名字存放的地址
 file_path_list = list(map(get_path, list_names))
@@ -38,7 +40,13 @@ file_path_list = list(map(get_path, list_names))
 args_dict = {}
 
 # 读取列表到词典
-args_result = list(map(get_list_from_file, file_path_list))
+try:
+    args_result = list(map(get_list_from_file, file_path_list))
+except Exception as e:
+    print('Content-Type: text/plain')
+    print('')
+    print(e)
+    sys.exit(1)
 
 for item in enumerate(list_names):  # enumerate 挺好用的
     args_dict[item[1]] = args_result[item[0]]
@@ -64,7 +72,8 @@ if random_int == 0:
     quote = '%s的本质是一种隐藏的%s。  --- %s著名%s %s %s'  % args_list        
 
 elif random_int == 1:
-    args_keys_list = ['languages', 'advantages', 'descriptions', 'companies', 'company_types', 'job_titles', 'first_names', 'last_names']
+    args_keys_list = ['languages', 'advantages', 'descriptions', 'companies', 'company_types', 'job_titles',
+                      'first_names', 'last_names']
     args_list = tuple(map(get_random_item, map(args_dict.get, args_keys_list)))
     quote = '我认为 %s 是世界上最好的语言，它的%s让我们的团队%s。 --- %s %s %s %s %s' % args_list
 
