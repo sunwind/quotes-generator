@@ -5,6 +5,9 @@ import cgi
 import sys
 from random import randint
 
+# 启用 CGI 调试信息显示
+import cgitb; cgitb.enable()
+
 # 获取 CGI URL 参数，以判断输出 TXT 或者 JSON 版本
 arguments = cgi.FieldStorage()
 
