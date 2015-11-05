@@ -1,0 +1,2 @@
+我是%s --- %s %s
+animals first_names last_names
