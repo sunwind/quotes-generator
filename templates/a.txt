@@ -1,0 +1,13 @@
+# Lines starting with # are comments and will be ignored by the parser.
+# ....
+
+# The first line without a # is a template with some arguments
+%s的本质是一种隐藏的%s。  --- %s著名%s %s %s
+
+# The second line without the # contains the all the arguments needed by the template above, and order matters.
+moods moods countries professions first_names last_names
+
+# DO NOT START A LINE WITH // or /* or any other signs like ; , as they are not currently recognized as a comment sign.
+# But @ is reserved.
+#
+# I LOVE VIM : )
