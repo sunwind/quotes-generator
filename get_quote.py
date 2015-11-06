@@ -58,7 +58,7 @@ def main():
     version = arguments.getvalue('v', 'txt')
 
     # 模板 ID (用于指定某个模板) 从 0 开始
-    template_id = arguments.getvalue('t', None)
+    template_id = int(arguments.getvalue('t', None))
 
     if template_id < 0:
         template_id = None
