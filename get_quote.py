@@ -57,6 +57,12 @@ def main():
     # 默认输出 TXT 格式的『名言』。也支持 JSON 格式的输出
     version = arguments.getvalue('v', 'txt')
 
+    # 模板 ID (用于指定某个模板) 从 0 开始
+    template_id = arguments.getvalue('t', None)
+
+    if template_id < 0:
+        template_id = None
+
     # 存放各个参数的词典，比如 args_dict['moods'] 等
     args_dict = {}
     read_lists_to_dict(args_dict)
@@ -65,8 +71,11 @@ def main():
     templates = []
     read_templates_to_list(templates)
 
-    # 随机决定使用哪个模板
-    random_int = randint(0, len(templates)-1)
+    # 随机决定使用哪个模板,除非指定过 template_id
+    if template_id is None or template_id >= len(templates):
+        random_int = randint(0, len(templates)-1)
+    else:
+        random_int = template_id
 
     # 随机得到 types 指定类别的参数列表
     try:
