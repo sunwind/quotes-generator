@@ -89,10 +89,10 @@ def main():
     elif version == 'json':
         print('Content-Type: application/json')
         print('')
-        quote, author = map(str.strip, (quote.split('---')))  # 分开名言和作者。TODO 这里有待改进
+        quote, author = map(str.strip, (quote.split('---')))  # 分开名言和作者。TODO 这里有待改进。因为模板不能保证分隔符都是 ---
         print('{"quote": "' + quote + '", "author": "' + author + '" }')
     else:
-        print('Status: 403')    # 参数不对禁止访问哦
+        print('Status: 403')    # 参数不对禁止访问
         print('')
 
 if __name__ == '__main__':
