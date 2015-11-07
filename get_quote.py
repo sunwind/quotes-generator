@@ -58,10 +58,7 @@ def main():
     version = arguments.getvalue('v', 'txt')
 
     # 模板 ID (用于指定某个模板) 从 0 开始
-    template_id = int(arguments.getvalue('t', None))
-
-    if template_id < 0:
-        template_id = None
+    template_id = int(arguments.getvalue('t', -1))
 
     # 存放各个参数的词典，比如 args_dict['moods'] 等
     args_dict = {}
@@ -72,7 +69,7 @@ def main():
     read_templates_to_list(templates)
 
     # 随机决定使用哪个模板,除非指定过 template_id
-    if template_id is None or template_id >= len(templates):
+    if template_id < 0 or template_id >= len(templates):
         random_int = randint(0, len(templates)-1)
     else:
         random_int = template_id
