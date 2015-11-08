@@ -6,8 +6,12 @@ import sys
 import os
 from random import randint
 
-# 启用 CGI 调试信息显示
-import cgitb; cgitb.enable()
+# 是否启用调试
+DEBUG = True
+
+if DEBUG:
+    # 启用 CGI 调试信息显示
+    import cgitb; cgitb.enable()
 
 # 从一个 list 中随机获取一项
 def get_random_item(some_list):
