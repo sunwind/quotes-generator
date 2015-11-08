@@ -32,7 +32,12 @@ def read_lists_to_dict(args_dict):
     except Exception as e:
         print('Content-Type: text/plain')
         print('')
-        print(e)
+        
+        if DEBUG:
+            print(e)
+        else:
+            print('Error')
+
         sys.exit(1)
 
 # TODO 与上面的那个函数合并下，减少代码
@@ -86,6 +91,10 @@ def main():
         print('Content-Type: text/plain')
         print('')
         print('有一只模板文件出了问题，请检查 templates 目录下的模板。')
+        
+        if DEBUG:
+            print(e)
+
         sys.exit(1)
 
     # 按照模板生成一句名言
