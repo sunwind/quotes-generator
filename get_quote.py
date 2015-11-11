@@ -17,7 +17,7 @@ if DEBUG:
 def get_random_item(some_list):
     return some_list[randint(0, len(some_list)-1)]
 
-# FIXME: lists 和 templates 改为 python 代码然后动态 import,这样就可以有 pyc 缓存加速
+# FIXME: lists 和 templates 改为 python 代码然后动态 import,这样就可以有 pyc 缓存加速. like __import__('fruits').args_list
 
 # TODO 提高效率。for 太多了。做一些 profiling
 # 遍历 lists 文件夹读取各个列表到词典
