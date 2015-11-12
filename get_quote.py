@@ -38,7 +38,7 @@ def read_lists_to_dict(args_dict):
         if DEBUG:
             print(e)
         else:
-            print('Error')
+            print('Fatal error. Please try to fix it as soon as possible.')
 
         sys.exit(1)
 
