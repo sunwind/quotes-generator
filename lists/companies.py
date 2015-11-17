@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-LIST = "苹果, 西瓜, 橘子, 水蜜桃, 香蕉, 橙子, 火龙果, 草莓, 柚子, 荔枝, 甘蔗, 柿子, 甜瓜"
+LIST = "Ambrella, AETex, Greenlake, FrontAge, Clevbit, Fantasy, Allem, Georming"
 
 
 # DO NOT EDIT LINES BELOW
@@ -12,4 +12,3 @@ if __name__ == '__main__':
           "Otherwise you may risk letting the cat out of the bag.")
 else:
     LIST = [item.strip() for item in LIST.split(',')]
-

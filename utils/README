@@ -1,0 +1,16 @@
+Automatically search for all .txt files within this folder to convert them to lists.py or templates.py
+
+EXAMPLE
+========
+
+INPUT: fruits.txt (file name must end with .txt)
+INPUT CONTENT:
+
+橘子
+西瓜
+苹果
+
+OUTPUT: fruits.py
+OUTPUT CONTENT:
+
+Please refer to files in the ../lists/ or ../templates/ folder.

@@ -2,92 +2,48 @@
 # -*- coding: utf-8 -*-
 
 import cgi
-import sys
-import os
 from random import randint
+from traverse import *
 
-# 是否启用调试
+# enable debugging or not
 DEBUG = True
 
 if DEBUG:
-    # 启用 CGI 调试信息显示
     import cgitb; cgitb.enable()
 
-# 从一个 list 中随机获取一项
+
+# randomly get an item from a list
 def get_random_item(some_list):
     return some_list[randint(0, len(some_list)-1)]
 
-# FIXME: lists 和 templates 改为 python 代码然后动态 import,这样就可以有 pyc 缓存加速. like __import__('fruits').args_list
-
-# TODO 提高效率。for 太多了。做一些 profiling
-# 遍历 lists 文件夹读取各个列表到词典
-def read_lists_to_dict(args_dict):
-    try:
-        for dirpath, dirnames, filenames in os.walk('lists'):
-            for some_list_file in filenames:
-                with open(os.path.join('lists', some_list_file), 'r') as some_list:
-                    all_content = some_list.read().split()
-
-                    all_content = [x for x in all_content if len(x.strip())]    # 过滤掉一些空行产生的空项
-
-                args_dict[some_list_file.split('.txt')[0]] = all_content
-    except Exception as e:
-        print('Content-Type: text/plain')
-        print('')
-        
-        if DEBUG:
-            print(e)
-        else:
-            print('Fatal error. Please try to fix it as soon as possible.')
-
-        sys.exit(1)
-
-# TODO 与上面的那个函数合并下，减少代码
-# 遍历 templates 文件夹的每一个模板
-def read_templates_to_list(templates):
-    for dirpath, dirnames, filenames in os.walk('templates'):
-        for template_file in filenames:
-            with open(os.path.join('templates', template_file), 'r') as one_template_file:
-                template_set = {}
-
-                for line in one_template_file:
-                    if len(line.strip()) and line[0] != '#':   # 如果不是注释行
-                        if 'template' not in template_set:
-                            template_set['template'] = line
-                        elif 'types' not in template_set:
-                            template_set['types'] = line
-                        else:
-                            break
-
-                templates.append(template_set)
 
 def main():
-    # 获取 CGI URL 参数，以判断输出 TXT 或者 JSON 版本
+    # get CGI URL arguments
     arguments = cgi.FieldStorage()
 
-    # 默认输出 TXT 格式的『名言』。也支持 JSON 格式的输出
+    # output TXT format by default. could change the format by ?v= argument in the URL
     version = arguments.getvalue('v', 'txt')
 
-    # 模板 ID (用于指定某个模板) 从 0 开始
+    # get template id to render. start from 0. specify id by ?t= argument in the URL
     template_id = int(arguments.getvalue('t', -1))
 
-    # 存放各个参数的词典，比如 args_dict['moods'] 等
+    # the dictionary for different types of lists, such as args_dict['countries'] for the country list
     args_dict = {}
     read_lists_to_dict(args_dict)
 
-    # 用来存放模板和参数字典的列表
+    # the list for storing qupte templates
     templates = []
     read_templates_to_list(templates)
 
-    # 随机决定使用哪个模板,除非指定过 template_id
+    # randomly choose a template id unless previously specified by the ?t= argument
     if template_id < 0 or template_id >= len(templates):
         random_int = randint(0, len(templates)-1)
     else:
         random_int = template_id
 
-    # 随机得到 types 指定类别的参数列表
+    # get a sequence of arguments to complete the chosen template
     try:
-        args_keys_list = templates[random_int]['types'].split()
+        args_keys_list = templates[random_int]['types']
         args_list = map(get_random_item, map(args_dict.get, args_keys_list))
     except TypeError as e:
         print('Content-Type: text/plain')
@@ -99,7 +55,7 @@ def main():
 
         sys.exit(1)
 
-    # 按照模板生成一句名言
+    # get a quote from the template and arguments generated above
     quote = templates[random_int]['template'] % tuple(args_list)
     quote = quote.strip()
 
@@ -110,10 +66,10 @@ def main():
     elif version == 'json':
         print('Content-Type: application/json')
         print('')
-        quote, author = map(str.strip, (quote.split('---')))  # 分开名言和作者。TODO 这里有待改进。因为模板不能保证分隔符都是 ---
+        quote, author = map(str.strip, (quote.split('---')))  # separate the quote and author FIXME: ---
         print('{"quote": "' + quote + '", "author": "' + author + '" }')
     else:
-        print('Status: 403')    # 参数不对禁止访问
+        print('Status: 403')    # return 403 if provided with invalid ?v= argument
         print('')
 
 if __name__ == '__main__':

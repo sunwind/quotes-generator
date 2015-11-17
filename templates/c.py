@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-TEMPLATE = '%s的本质是一种隐藏的%s。  --- %s著名%s %s %s'
-ARGS_TYPE = 'moods moods countries professions first_names last_names'
+TEMPLATE = '%s 语言就像%s一样，需要细细品味，%s充分体会它那愈久弥深的%s。 --- %s 公司 %s : %s %s'
+ARGS_TYPE = 'languages fruits still advantages companies job_titles first_names last_names'
 
 
 # DO NOT EDIT LINES BELOW IF NOT NECESSARY

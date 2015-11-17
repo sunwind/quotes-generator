@@ -1,2 +1,0 @@
-%s 语言就像%s一样，需要细细品味，%s充分体会它那愈久弥深的%s。 --- %s 公司 %s : %s %s
-languages fruits still advantages companies job_titles first_names last_names

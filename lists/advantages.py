@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-LIST = "苹果, 西瓜, 橘子, 水蜜桃, 香蕉, 橙子, 火龙果, 草莓, 柚子, 荔枝, 甘蔗, 柿子, 甜瓜"
+LIST = "优雅, 效率, 灵活, 博大精深, 成熟度, 可靠, 高水准, 适应性"
 
 
 # DO NOT EDIT LINES BELOW

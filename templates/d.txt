@@ -1,2 +1,0 @@
-我是%s，真的。 --- %s %s
-animals first_names last_names

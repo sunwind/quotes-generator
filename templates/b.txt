@@ -1,2 +1,0 @@
-我认为 %s 是世界上最好的语言，它的%s让我们的团队%s。 --- %s %s %s %s %s
-languages advantages descriptions companies company_types job_titles first_names last_names

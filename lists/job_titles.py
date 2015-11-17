@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-LIST = "苹果, 西瓜, 橘子, 水蜜桃, 香蕉, 橙子, 火龙果, 草莓, 柚子, 荔枝, 甘蔗, 柿子, 甜瓜"
+LIST = "CEO, 系统架构师, 资深开发工程师, 项目经理, 技术总监, CTO, 总裁"
 
 
 # DO NOT EDIT LINES BELOW
