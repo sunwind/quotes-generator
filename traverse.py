@@ -12,8 +12,11 @@ def read_lists_to_dict(args_dict):
 
             if module_name[0] == "_":  # ignore __init__.py or other files that are not meant to load
                 continue
-
-            args_dict[module_name] = __import__(module_name).LIST
+            
+            try:
+                args_dict[module_name] = __import__(module_name).LIST
+            except ImportError:   # ignore modules that cannot be imported
+                pass
 
     sys.path.pop()
 
@@ -29,11 +32,14 @@ def read_templates_to_list(templates):
             if module_name[0] == "_":  # ignore __init__.py or other files that are not meant to load
                 continue
 
-            template_set = dict()
+            try:
+                template_set = dict()
 
-            template_set['template'] = __import__(module_name).TEMPLATE
-            template_set['types'] = __import__(module_name).ARGS_TYPE
+                template_set['template'] = __import__(module_name).TEMPLATE
+                template_set['types'] = __import__(module_name).ARGS_TYPE
 
-            templates.append(template_set)
+                templates.append(template_set)
+            except ImportError:  # ignore modules that cannot be imported
+                pass
 
     sys.path.pop()

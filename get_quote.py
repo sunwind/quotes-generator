@@ -6,7 +6,7 @@ from random import randint
 from traverse import *
 
 # enable debugging or not
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     import cgitb; cgitb.enable()
