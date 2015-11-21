@@ -6,6 +6,7 @@ A quote generator for learning Python
 - 支持以 CGI 方式在 Apache 等服务器软件上运行
 - 支持以 JSON 或者纯文本方式输出，通过 URL 的 v 参数设置. v=txt or v=json
 - URL 的 t 参数可以指定某个模板号，从 0 开始。
+- 可以自动生成模板和列表的 py 文件（也算一种简单的元编程吧）
 
 ## TODO
 加入更多的模板
