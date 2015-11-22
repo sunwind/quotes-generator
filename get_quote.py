@@ -22,9 +22,10 @@ def main():
     arguments = cgi.FieldStorage()
 
     # output TXT format by default. could change the format by ?v= argument in the URL
+    # currently only 'json' and 'txt' are supported.
     version = arguments.getvalue('v', 'txt')
 
-    # get template id to render. start from 0. specify id by ?t= argument in the URL
+    # get template_id to render. start from 0. could manually specify an id by the ?t= argument in the URL
     template_id = int(arguments.getvalue('t', -1))
 
     # the dictionary for different types of lists, such as args_dict['countries'] for the country list
@@ -32,18 +33,21 @@ def main():
     read_lists_to_dict(args_dict)
 
     # the list for storing qupte templates
-    templates = []
-    read_templates_to_list(templates)
+    templates_list = []
+    read_templates_to_list(templates_list)
 
     # randomly choose a template id unless previously specified by the ?t= argument
-    if template_id < 0 or template_id >= len(templates):
-        random_int = randint(0, len(templates)-1)
+    if template_id < 0 or template_id >= len(templates_list):
+        random_int = randint(0, len(templates_list)-1)
     else:
         random_int = template_id
 
     # get a sequence of arguments to complete the chosen template
     try:
-        args_keys_list = templates[random_int]['types']
+        args_keys_list = templates_list[random_int]['types']
+
+        # firstly get all of the lists needed from `args_dict` using `args_keys_list` which contains the name of each list
+        # then randomly pick one item from each list
         args_list = map(get_random_item, map(args_dict.get, args_keys_list))
     except TypeError as e:
         print('Content-Type: text/plain')
@@ -56,7 +60,7 @@ def main():
         sys.exit(1)
 
     # get a quote from the template and arguments generated above
-    quote = templates[random_int]['template'] % tuple(args_list)
+    quote = templates_list[random_int]['template'] % tuple(args_list)
     quote = quote.strip()
 
     if version == 'txt':
