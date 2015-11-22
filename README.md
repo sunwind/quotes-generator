@@ -10,9 +10,11 @@ A quote generator for learning Python
 
 ## TODO
 加入更多的模板
+切换语言功能
 完善代码结构，提高效率（不过目前来说瓶颈还在网络延迟上）
 完善错误显示，邮件告知
-自然语言处理库可以用上么
+分隔格言和人名
 GUI 支持
 ...
 
+英文版的准备参考 https://api.github.com/zen 来实现。
