@@ -4,6 +4,9 @@
 import cgi
 from random import randint
 from traverse import *
+import logging
+
+# TODO Added logging
 
 # enable debugging or not
 DEBUG = False
