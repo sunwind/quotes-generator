@@ -6,7 +6,8 @@ from random import randint
 from traverse import *
 import logging
 
-# TODO Added logging
+# TODO Add wsgi support 
+# TODO Add logging
 
 # enable debugging or not
 DEBUG = False
