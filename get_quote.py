@@ -6,7 +6,7 @@ from random import randint
 from traverse import *
 import logging
 
-# TODO Add wsgi support 
+# TODO Add wsgi support... CGI is obsolete, but I do not have enough time now. Fix this asap.
 # TODO Add logging
 
 # enable debugging or not
